@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rsoul — Validasi Diri, Tanpa Toksik Positif</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6efe4;--ink:#2b2118;--mut:#6e6052;--terra:#b8481f;--sage:#6f8d6a;--sand:#e8d9c0;--card:#fffaf1;--line:#dccfb8;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#17130f;--ink:#f1e8da;--mut:#b5a794;--terra:#e8805a;--sage:#8fae89;--sand:#33291f;--card:#221c16;--line:#3a3027;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#17130f;--ink:#f1e8da;--mut:#b5a794;--terra:#e8805a;--sage:#8fae89;--sand:#33291f;--card:#221c16;--line:#3a3027;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 "DM Sans",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
+h1,h2,h3,.logo{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(34px,6vw,58px)}h2{font-size:clamp(24px,3.5vw,34px);margin-bottom:12px}h3{font-size:20px;margin-bottom:6px}
+p{margin:0 0 12px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.logo{font-size:26px;color:var(--terra);text-decoration:none}
+nav{display:flex;gap:2px;overflow-x:auto;max-width:100%}
+nav a{padding:8px 12px;border-radius:8px;color:var(--mut);text-decoration:none;font-size:14px;white-space:nowrap}
+nav a.on{color:var(--ink);background:var(--sand);font-weight:700}
+.btn{border:1px solid var(--terra);background:var(--terra);color:#fff;font:700 15px "DM Sans",sans-serif;padding:11px 20px;border-radius:10px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.o{background:none;color:var(--terra)}
+.btn.s{padding:6px 12px;font-size:13px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:44px 0}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.hero svg{max-width:300px;margin:auto}}
+.lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:10px}
+.lead{font-size:18px;color:var(--mut);max-width:520px;margin:16px 0 24px}
+.sec{padding:40px 0;border-top:1px solid var(--line)}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.num{font:600 30px Fraunces,Georgia,serif;color:var(--terra);display:block;margin-bottom:4px}
+.bad,.good{padding:14px 16px;border-radius:10px;margin:8px 0}
+.bad{background:var(--sand);border-left:4px solid var(--terra)}
+.good{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--sage)}
+.bad small,.good small{display:block;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:11px;color:var(--mut)}
+.pg{padding:36px 0 60px;max-width:760px}
+.steps{display:flex;gap:6px;margin:14px 0 22px}
+.steps i{flex:1;height:4px;background:var(--line);border-radius:2px}.steps i.on{background:var(--terra)}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.opt{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:12px;font:500 15px "DM Sans",sans-serif;cursor:pointer;text-align:left}
+.opt.on{border-color:var(--terra);background:var(--sand);font-weight:700}
+input,textarea{width:100%;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:11px 13px;font:inherit}
+textarea{min-height:110px;resize:vertical}
+input[type=range]{padding:0;accent-color:var(--terra)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.res{border-left:4px solid var(--terra);padding:6px 0 6px 18px;font-size:18px;font-family:Fraunces,Georgia,serif}
+.cov{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.cov .card{cursor:pointer;padding:0;overflow:hidden}.cov .card div{padding:14px 18px 18px}
+.cov svg,.hero svg{display:block;width:100%;height:auto}
+.cr{border:2px solid var(--terra);background:var(--card);border-radius:12px;padding:16px;margin:14px 0}
+.cr a{color:var(--terra);font-weight:700}
+.rp{border-left:3px solid var(--sage);padding-left:12px;margin:8px 0;font-size:15px}
+.note{background:var(--sand);border-radius:10px;padding:10px 14px;font-size:14px;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:15px}td,th{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}th{background:var(--sand)}
+.tw{overflow-x:auto}
+small,.mut{color:var(--mut)}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:14px;color:var(--mut)}
+</style></head><body>
+<header><div class="wrap hd"><a class="logo" href="#beranda">Rsoul</a><nav id="nv" aria-label="Menu utama"></nav></div></header>
+<main id="v" class="wrap"></main>
+<footer><div class="wrap">Rsoul (our soul) adalah media edukasi, bukan pengganti psikolog, psikiater, atau layanan darurat.<br>Karya Naura Fitria Riski Hidayah, Universitas Diponegoro.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const S=(k,d)=>{try{const v=localStorage.getItem('rs_'+k);return v?JSON.parse(v):d}catch(e){return d}};
+const W=(k,v)=>{try{localStorage.setItem('rs_'+k,JSON.stringify(v))}catch(e){}};
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CR=/bunuh diri|mengakhiri hidup|akhiri hidup|ingin mati|pengen mati|mati aja|menyakiti diri|self.?harm/i;
+const TP=/semangat|bersyukur aja|jangan sedih|harus kuat|positif aja|pikirkan yang positif|masih banyak yang lebih|ikhlas(in)? aja|jangan lebay|move on aja/i;
+const R=[['beranda','Beranda'],['catatan','Catatan Rasa'],['uji','Uji Kalimat'],['ruang','Ruang Aman'],['pelajari','Pelajari'],['bantuan','Bantuan']];
+let art=null,openR=null,cs={s:1,e:null,i:3,t:'',n:null},qz={i:0,sc:0,a:null};
+
+const P=[['#b8481f','#ead9bf','#6f8d6a'],['#6f8d6a','#f0e3cc','#b8481f'],['#c98b2b','#efe2cc','#5f7f78'],['#9c4034','#ead9bf','#7f9a7a'],['#4f7168','#efe3d0','#c47a2f']];
+function pic(i,H){const c=P[i%5],id='a'+i+'_'+H;return `<svg viewBox="0 0 400 ${H}" role="img" aria-label="Ilustrasi abstrak"><defs><clipPath id="${id}"><path d="M60 ${H}V160A140 140 0 0 1 340 160V${H}Z"/></clipPath></defs><rect width="400" height="${H}" fill="${c[1]}" opacity=".35"/><g clip-path="url(#${id})"><rect width="400" height="${H}" fill="${c[1]}"/><circle cx="215" cy="${H>300?150:112}" r="${H>300?46:36}" fill="${c[0]}"/><path d="M0 ${H*.7}Q110 ${H*.52} 220 ${H*.68}T400 ${H*.6}V${H}H0Z" fill="${c[2]}"/><path d="M0 ${H*.84}Q120 ${H*.7} 240 ${H*.84}T400 ${H*.78}V${H}H0Z" fill="${c[0]}" opacity=".85"/></g></svg>`}
+
+const E=[
+['Sedih','Sedih sering muncul saat ada kehilangan atau harapan yang tidak terpenuhi. Ia mengajakmu berhenti sejenak dan merawat diri.','Beri waktu untuk menangis atau diam. Minum air hangat, lalu kabari satu orang yang aman.'],
+['Marah','Marah biasanya menandakan ada batas yang dilanggar atau kebutuhan yang diabaikan.','Tarik napas panjang, menjauh dari pemicu sebentar, lalu tulis bagian mana yang terasa tidak adil.'],
+['Cemas','Cemas muncul ketika pikiran mencoba melindungimu dari hal yang belum pasti.','Coba latihan 5-4-3-2-1: sebutkan 5 hal yang terlihat, 4 yang tersentuh, 3 yang terdengar, 2 yang tercium, 1 yang terasa.'],
+['Kecewa','Kecewa menunjukkan bahwa sesuatu itu penting bagimu dan hasilnya tidak sesuai harapan.','Akui bahwa usahamu nyata. Pisahkan mana yang bisa kamu ubah dan mana yang tidak.'],
+['Lelah','Lelah adalah sinyal tenagamu terkuras, bukan tanda bahwa kamu malas.','Pilih satu hal yang boleh ditunda hari ini, lalu istirahat tanpa rasa bersalah.'],
+['Malu','Malu sering muncul saat kita takut dinilai orang lain. Hampir semua orang pernah mengalaminya.','Ingat bahwa satu kejadian tidak menentukan siapa dirimu. Ceritakan ke orang yang kamu percaya.'],
+['Kesepian','Kesepian menunjukkan kebutuhan akan kedekatan yang belum terpenuhi.','Kirim pesan singkat ke satu orang, atau berada di tempat yang ramai sebentar.'],
+['Bingung','Bingung wajar saat banyak hal terjadi sekaligus dan belum ada jawaban.','Tuliskan semua yang ada di kepala, lalu pilih satu langkah kecil yang bisa dikerjakan.']];
+const N=['didengar','beristirahat','ditemani','kepastian','waktu sendiri','dihargai'];
+const Q=[
+['Jangan sedih, masih banyak yang lebih susah dari kamu.',1,'Kalimat ini membandingkan penderitaan dan membuat orang merasa bersalah karena sedih.','Kedengarannya berat sekali. Aku di sini kalau kamu mau bercerita.'],
+['Wajar kalau kamu kecewa. Itu hasil yang kamu perjuangkan.',0,'Kalimat ini mengakui perasaan dan alasannya tanpa menyuruh perasaan itu hilang.',''],
+['Pikirin yang positif aja, nanti juga hilang sendiri.',1,'Menyuruh berpikir positif menolak perasaan yang sedang ada, bukan membantu melewatinya.','Kamu boleh merasa begini dulu. Mau cerita bagian mana yang paling berat?'],
+['Aku mendengarmu. Kamu tidak harus baik-baik saja sekarang.',0,'Kalimat ini memberi ruang dan izin untuk tidak baik-baik saja.',''],
+['Bersyukur aja, hidupmu kan sudah enak.',1,'Rasa syukur dan rasa sedih bisa hadir bersamaan. Memaksa bersyukur membuat perasaan sulit terasa tidak sah.','Terima kasih sudah cerita. Pasti ada yang membuatmu merasa seberat ini.'],
+['Capek itu manusiawi. Mau istirahat sebentar atau mau ditemani bercerita?',0,'Kalimat ini menormalkan perasaan dan menawarkan pilihan dukungan.','']];
+const ART=[
+['Apa itu validasi diri?','Mengakui bahwa perasaanmu nyata dan wajar.',['Validasi diri adalah kemampuan mengakui dan menerima pengalaman emosional sendiri sebagai sesuatu yang wajar, tanpa menghakimi. Kalimat sederhananya: “Aku boleh merasa begini, dan perasaan ini ada alasannya.”','Validasi tidak berarti membenarkan semua tindakan. Kamu bisa menerima rasa marahmu sambil tetap memilih cara yang tidak menyakiti orang lain. Yang divalidasi adalah perasaannya, bukan setiap perilaku yang muncul darinya.','Tiga langkah sederhana: namai perasaannya (“aku merasa kecewa”), cari alasannya (“karena aku sudah berusaha keras”), lalu izinkan dirimu merasakannya sebentar sebelum memutuskan langkah berikutnya.']],
+['Toksik positif: kenali tandanya','Saat “positif” dipakai untuk menutup perasaan.',['Toksik positif adalah tekanan untuk selalu terlihat positif dan bahagia, sampai perasaan sulit dianggap salah atau harus segera disingkirkan. Positif itu sendiri tidak buruk. Masalahnya muncul saat positif dipaksakan.','Tandanya antara lain: merasa bersalah ketika sedih, menyembunyikan perasaan supaya tidak merepotkan, atau menerima nasihat seperti “bersyukur aja” dan “jangan lebay”.','Penelitian psikologi umumnya menunjukkan bahwa menekan emosi cenderung tidak efektif dan dapat menambah beban dalam jangka panjang. Menerima emosi lebih dulu biasanya membuat kita lebih mampu mengelolanya.']],
+['Emosi negatif adalah sinyal','Setiap emosi membawa pesan.',['Emosi seperti sedih, marah, dan cemas sering disebut negatif karena rasanya tidak nyaman, bukan karena ia buruk. Masing-masing membawa informasi: sedih tentang kehilangan, marah tentang batas yang dilanggar, cemas tentang hal yang belum pasti.','Berdamai dengan emosi berarti mendengarkan pesannya, bukan memenangkan pertarungan melawannya. Setelah didengar, emosi biasanya mereda dengan sendirinya.','Gunakan halaman Catatan Rasa untuk menamai emosi dan menemukan langkah kecil yang sesuai.']],
+['Cara memvalidasi orang lain','Hadir lebih penting daripada memberi solusi.',['Saat teman bercerita, kebanyakan dari kita ingin cepat menghibur. Padahal yang paling dibutuhkan sering kali hanya merasa didengar.','Coba urutan ini: dengarkan sampai selesai, sebutkan apa yang kamu tangkap (“kedengarannya kamu kecewa sekali”), katakan bahwa itu wajar, lalu tanyakan apa yang ia butuhkan, misalnya ditemani atau diberi saran.','Hindari kalimat yang membandingkan, menyuruh berhenti sedih, atau langsung mencari sisi baik. Latih dirimu lewat Uji Kalimat.']],
+['Kapan perlu bantuan profesional','Validasi diri bukan pengganti perawatan.',['Menerima emosi adalah langkah awal, tetapi tidak selalu cukup. Pertimbangkan mencari bantuan profesional bila perasaan berat berlangsung berminggu-minggu, mengganggu sekolah, pekerjaan, atau hubungan, atau kamu memakai cara yang berbahaya untuk meredakannya.','Bila kamu berpikir untuk menyakiti diri atau mengakhiri hidup, segera hubungi layanan darurat. Itu bukan tanda kelemahan, dan kamu berhak mendapat bantuan.','Daftar tempat meminta bantuan ada di halaman Bantuan.']]];
+const SEED=[{id:1,x:'Aku merasa gagal setelah nilai ujianku turun, padahal sudah belajar. Orang di sekitarku bilang jangan dipikirin, tapi aku tetap kepikiran.',l:4,r:['Perasaanmu masuk akal. Usahamu tetap nyata.']},{id:2,x:'Akhir-akhir ini aku capek pura-pura baik-baik saja di depan teman.',l:7,r:[]},{id:3,x:'Aku marah pada diri sendiri karena terus-terusan cemas, lalu jadi merasa bersalah karena cemas.',l:3,r:[]}];
+const PH=['Aku mendengarmu.','Perasaanmu masuk akal.','Terima kasih sudah berani bercerita.','Kamu tidak sendirian.'];
+
+function crisis(x){return `<div class="cr"><h3>Kamu penting, dan kamu tidak sendirian.</h3><p>Jika kamu berpikir untuk menyakiti diri atau mengakhiri hidup, tolong hubungi bantuan sekarang:</p><ul><li>Layanan kesehatan jiwa Kemenkes: <a href="tel:119">119</a>, lalu tekan 8</li><li>Darurat: <a href="tel:112">112</a></li><li>Atau datang ke IGD terdekat dan kabari orang dewasa yang kamu percaya.</li></ul>${x||''}</div>`}
+function cur(){const h=location.hash.slice(1);return R.some(r=>r[0]==h)?h:'beranda'}
+function render(){const v=cur();$('#nv').innerHTML=R.map(r=>`<a href="#${r[0]}" class="${r[0]==v?'on':''}">${r[1]}</a>`).join('');$('#v').innerHTML=({beranda,catatan,uji,ruang,pelajari,bantuan})[v]()}
+addEventListener('hashchange',()=>{art=null;openR=null;render();scrollTo(0,0)});
+
+function beranda(){return `<section class="hero"><div><div class="lab">Validasi diri dan kesehatan mental</div><h1>Tidak apa-apa untuk tidak baik-baik saja.</h1><p class="lead">Rsoul adalah ruang untuk mengenali, menamai, dan menerima emosi sulit, tanpa dipaksa langsung merasa bahagia.</p><div class="row"><a class="btn" href="#catatan">Catat perasaanmu</a><a class="btn o" href="#pelajari">Pelajari validasi diri</a></div></div>${pic(0,440)}</section>
+<section class="sec"><div class="lab">Yang kami yakini</div><div class="g3"><div class="card"><span class="num">01</span><h3>Emosi sulit bukan musuh</h3><p>Sedih, marah, dan cemas adalah sinyal. Mereka layak didengar, bukan dibungkam.</p></div><div class="card"><span class="num">02</span><h3>Validasi bukan membenarkan semua</h3><p>Kita menerima perasaannya, sambil tetap bertanggung jawab pada tindakan kita.</p></div><div class="card"><span class="num">03</span><h3>Pulih boleh pelan</h3><p>Tidak ada tenggat untuk merasa baik. Satu langkah kecil sudah cukup.</p></div></div></section>
+<section class="sec"><div class="lab">Beda tipis, dampaknya besar</div><h2>Toksik positif atau validasi?</h2><div class="g3"><div><div class="bad"><small>Toksik positif</small>“Jangan sedih, pikirin yang positif aja.”</div><div class="bad"><small>Toksik positif</small>“Masih banyak yang lebih susah dari kamu.”</div></div><div><div class="good"><small>Validasi</small>“Kedengarannya berat sekali. Aku di sini.”</div><div class="good"><small>Validasi</small>“Wajar kalau kamu merasa begitu.”</div></div><div class="card"><p>Bisakah kamu membedakannya? Uji dirimu dengan enam kalimat yang sering kita dengar.</p><a class="btn s" href="#uji">Mulai Uji Kalimat</a></div></div></section>
+<section class="sec"><div class="lab">Fitur</div><div class="g3">${[['catatan','Catatan Rasa','Namai emosimu, pahami kebutuhannya, dan dapatkan respons yang memvalidasi.'],['ruang','Ruang Aman','Bercerita anonim dan saling membalas dengan kalimat yang menguatkan.'],['pelajari','Pelajari','Artikel singkat tentang validasi diri dan batas toksik positif.']].map(f=>`<a href="#${f[0]}" style="text-decoration:none;color:inherit"><div class="card" style="height:100%"><h3>${f[1]}</h3><p class="mut">${f[2]}</p></div></a>`).join('')}</div></section>`}
+
+function catatan(){
+ const log=S('log',[]);let b='';
+ const st=`<div class="steps">${[1,2,3,4].map(n=>`<i class="${n<=cs.s?'on':''}"></i>`).join('')}</div>`;
+ if(cs.s==1)b=`<h3>1. Apa yang kamu rasakan?</h3><p class="mut">Menamai emosi sudah membantu menenangkan.</p><div class="eg">${E.map((e,i)=>`<button class="opt ${cs.e===i?'on':''}" onclick="cs.e=${i};render()">${e[0]}</button>`).join('')}</div><p style="margin-top:18px">Seberapa kuat? <b id="iv">${cs.i}</b> dari 5</p><input type="range" min="1" max="5" value="${cs.i}" oninput="cs.i=+this.value;$('#iv').textContent=this.value" aria-label="Intensitas"><div class="row"><button class="btn" onclick="if(cs.e===null)return;cs.s=2;render()">Lanjut</button></div>`;
+ if(cs.s==2)b=`<h3>2. Apa yang terjadi?</h3><p class="mut">Tulis seperlunya. Tidak ada jawaban yang salah.</p><textarea oninput="cs.t=this.value" aria-label="Cerita">${esc(cs.t)}</textarea><div class="row"><button class="btn o" onclick="cs.s=1;render()">Kembali</button><button class="btn" onclick="cs.s=3;render()">Lanjut</button></div>`;
+ if(cs.s==3)b=`<h3>3. Apa yang kamu butuhkan?</h3><p class="mut">Setiap emosi biasanya menyimpan kebutuhan.</p><div class="eg">${N.map((n,i)=>`<button class="opt ${cs.n===i?'on':''}" onclick="cs.n=${i};render()">Ingin ${n}</button>`).join('')}</div><div class="row"><button class="btn o" onclick="cs.s=2;render()">Kembali</button><button class="btn" onclick="if(cs.n===null)return;cs.s=4;render()">Lihat respons</button></div>`;
+ if(cs.s==4){const e=E[cs.e];b=`<h3>Untukmu</h3><div class="res"><p>Wajar jika kamu merasa ${e[0].toLowerCase()}, apalagi dengan intensitas ${cs.i} dari 5. ${e[1]}</p><p>Kamu tidak harus langsung merasa baik. Mungkin yang paling kamu butuhkan sekarang adalah ${N[cs.n]}.</p></div><div class="card" style="margin-top:14px"><b>Langkah kecil</b><p style="margin:6px 0 0">${e[2]}</p></div>${CR.test(cs.t)?crisis():''}<div class="row"><button class="btn" onclick="saveLog()">Simpan catatan</button><button class="btn o" onclick="cs={s:1,e:null,i:3,t:'',n:null};render()">Ulangi</button></div>`}
+ return `<div class="pg"><div class="lab">Catatan Rasa</div><h1 style="font-size:clamp(30px,5vw,44px)">Dengarkan dirimu dulu.</h1>${st}${b}${log.length?`<h2 style="margin-top:44px">Riwayat</h2>${log.slice(0,6).map((l,i)=>`<div class="card" style="margin:8px 0"><small>${l.d}</small><div><b>${l.e}</b> (${l.i}/5), ingin ${l.n}</div>${l.t?`<div class="mut">${esc(l.t.slice(0,140))}</div>`:''}<button class="btn o s" style="margin-top:8px" onclick="delLog(${i})">Hapus</button></div>`).join('')}`:''}</div>`}
+function saveLog(){const l=S('log',[]);l.unshift({d:new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}),e:E[cs.e][0],i:cs.i,t:cs.t,n:N[cs.n]});W('log',l);cs={s:1,e:null,i:3,t:'',n:null};render()}
+function delLog(i){const l=S('log',[]);l.splice(i,1);W('log',l);render()}
+
+function uji(){
+ if(qz.i>=Q.length)return `<div class="pg"><div class="lab">Uji Kalimat</div><h1 style="font-size:clamp(30px,5vw,44px)">Skormu ${qz.sc} dari ${Q.length}</h1><p class="lead">Membedakan toksik positif dan validasi adalah keterampilan yang bisa dilatih. Bacalah ulang artikel “Cara memvalidasi orang lain” di halaman Pelajari.</p><div class="row"><button class="btn" onclick="qz={i:0,sc:0,a:null};render()">Ulangi</button><a class="btn o" href="#pelajari">Ke Pelajari</a></div></div>`;
+ const q=Q[qz.i],a=qz.a;
+ return `<div class="pg"><div class="lab">Uji Kalimat ${qz.i+1} dari ${Q.length}</div><h1 style="font-size:clamp(28px,4.5vw,40px);margin-bottom:20px">“${q[0]}”</h1><p class="mut">Kalimat ini termasuk apa?</p><div class="row"><button class="btn o" ${a!==null?'disabled':''} onclick="ans(1)">Toksik positif</button><button class="btn o" ${a!==null?'disabled':''} onclick="ans(0)">Validasi</button></div>${a!==null?`<div class="${a==q[1]?'good':'bad'}" style="margin-top:20px"><small>${a==q[1]?'Tepat':'Kurang tepat'}: ${q[1]?'toksik positif':'validasi'}</small>${q[2]}${q[3]?`<p style="margin:8px 0 0"><b>Coba katakan:</b> “${q[3]}”</p>`:''}</div><div class="row"><button class="btn" onclick="qz.i++;qz.a=null;render()">Lanjut</button></div>`:''}</div>`}
+function ans(x){qz.a=x;if(x==Q[qz.i][1])qz.sc++;render()}
+
+function ruang(){
+ const ps=S('posts',SEED);
+ return `<div class="pg"><div class="lab">Ruang Aman</div><h1 style="font-size:clamp(30px,5vw,44px)">Bercerita tanpa dihakimi.</h1><p class="lead" style="margin-top:10px">Semua tulisan anonim. Balasan di sini dilatih untuk memvalidasi, bukan menyuruh berhenti merasa.</p>
+<div class="card"><textarea id="tx" maxlength="400" placeholder="Apa yang sedang kamu rasakan?" aria-label="Ceritamu"></textarea><div class="row"><button class="btn" onclick="share()">Bagikan secara anonim</button></div><div id="cr"></div></div>
+${ps.map(p=>`<div class="card" style="margin:12px 0"><small>Anonim</small><p style="margin:4px 0 8px">${esc(p.x)}</p>${p.r.map(r=>`<div class="rp">${esc(r)}</div>`).join('')}<div class="row"><button class="btn o s" onclick="like(${p.id})">Aku juga merasa begini (${p.l})</button><button class="btn o s" onclick="openR=${p.id};render()">Balas</button></div>${openR==p.id?`<div class="note"><div class="row" style="margin:0 0 8px">${PH.map(h=>`<button class="opt" style="padding:6px 10px;font-size:13px" onclick="$('#rp').value+=(\$('#rp').value?' ':'')+this.textContent">${h}</button>`).join('')}</div><input id="rp" maxlength="200" placeholder="Tulis balasan yang memvalidasi…" aria-label="Balasan"><div class="row"><button class="btn s" onclick="reply(${p.id})">Kirim</button></div><div id="tp"></div></div>`:''}</div>`).join('')}</div>`}
+function share(){const x=($('#tx').value||'').trim();if(!x)return;if(CR.test(x)&&!window._f){$('#cr').innerHTML=crisis('<button class="btn o s" onclick="window._f=1;share()">Tetap bagikan</button>');return}window._f=0;const ps=S('posts',SEED);ps.unshift({id:Date.now(),x,l:0,r:[]});W('posts',ps);render()}
+function like(id){const ps=S('posts',SEED);ps.forEach(p=>{if(p.id==id)p.l++});W('posts',ps);render()}
+function reply(id){const v=($('#rp').value||'').trim();if(!v)return;if(TP.test(v)&&!window._t){window._t=1;$('#tp').innerHTML='<div class="bad" style="margin-top:10px"><small>Sebentar</small>Kalimat ini bisa terdengar meremehkan perasaan. Coba ganti dengan: “Kedengarannya berat sekali, aku di sini.” Kirim lagi bila kamu tetap ingin memakainya.</div>';return}window._t=0;const ps=S('posts',SEED);ps.forEach(p=>{if(p.id==id)p.r.push(v)});W('posts',ps);openR=null;render()}
+
+function pelajari(){
+ if(art!==null){const a=ART[art];return `<div class="pg"><a href="#pelajari" onclick="art=null;render();return false" class="mut">‹ Semua artikel</a><div style="max-width:300px;margin:16px 0">${pic(art,240)}</div><h1 style="font-size:clamp(30px,5vw,44px);margin-bottom:16px">${a[0]}</h1>${a[2].map(p=>`<p>${p}</p>`).join('')}<div class="row"><a class="btn o" href="#uji">Uji Kalimat</a><a class="btn o" href="#catatan">Catatan Rasa</a></div></div>`}
+ return `<div class="pg" style="max-width:none"><div class="lab">Pelajari</div><h1 style="font-size:clamp(30px,5vw,44px)">Mengenal validasi diri.</h1><div class="cov" style="margin-top:24px">${ART.map((a,i)=>`<div class="card" onclick="art=${i};render();scrollTo(0,0)">${pic(i,240)}<div><h3>${a[0]}</h3><p class="mut" style="margin:0">${a[1]}</p></div></div>`).join('')}</div>
+<h2 style="margin-top:44px">Validasi vs toksik positif</h2><div class="tw"><table><tr><th></th><th>Toksik positif</th><th>Validasi</th></tr><tr><td>Sikap pada emosi sulit</td><td>Dihindari atau disingkirkan</td><td>Diakui dan didengar</td></tr><tr><td>Contoh kalimat</td><td>“Jangan sedih, bersyukur aja.”</td><td>“Wajar kalau kamu sedih.”</td></tr><tr><td>Efek yang dirasakan</td><td>Merasa salah dan sendirian</td><td>Merasa dipahami</td></tr><tr><td>Fokus</td><td>Cepat merasa baik</td><td>Melewati perasaan dengan sadar</td></tr></table></div></div>`}
+
+function bantuan(){return `<div class="pg"><div class="lab">Bantuan</div><h1 style="font-size:clamp(30px,5vw,44px);margin-bottom:16px">Kamu boleh meminta bantuan.</h1>${crisis()}<div class="g3" style="margin-top:16px"><div class="card"><h3>Puskesmas</h3><p class="mut" style="margin:0">Banyak puskesmas melayani konsultasi kesehatan jiwa dengan biaya terjangkau.</p></div><div class="card"><h3>Rumah sakit</h3><p class="mut" style="margin:0">Cari poli jiwa atau psikolog klinis di rumah sakit terdekat.</p></div><div class="card"><h3>Guru BK</h3><p class="mut" style="margin:0">Untuk pelajar, konselor sekolah adalah tempat pertama yang aman untuk bercerita.</p></div></div><p class="mut" style="margin-top:20px">Catatan dan cerita tersimpan hanya di perangkat ini.</p><button class="btn o s" onclick="if(confirm('Hapus semua data Rsoul di perangkat ini?')){['log','posts'].forEach(k=>{try{localStorage.removeItem('rs_'+k)}catch(e){}});render()}">Hapus data saya</button></div>`}
+render();
+</script></body></html>
